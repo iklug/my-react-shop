@@ -1,5 +1,5 @@
 
-export default const bookObject = [
+const bookObject = [
      {
         title: 'The Way of Kings',
         length: 1007,
@@ -59,3 +59,5 @@ export default const bookObject = [
     
     
 ]
+
+export default bookObject;
