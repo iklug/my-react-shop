@@ -1,7 +1,9 @@
 
 const Card = () => {
     return (
-        <></>
+        <>
+        <div>Testing Out Some Git Commands</div>
+        </>
     )
 }
 
