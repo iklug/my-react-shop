@@ -7,9 +7,9 @@ function App() {
 
 
   return (
-    <>
-    <Card />
-    </>
+    <div className="w-4/5 m-auto">
+    {bookObject.map(item => <Card book={item}/>)}
+    </div>
   )
 }
 
