@@ -1,5 +1,5 @@
 
-const Header = () => {
+const Header = ({activeTab, handleSelection}) => {
     return (
      
         <div className="h-20 flex flex-row bg-stone-50 shadow-md fixed w-full justify-between pl-6 pr-8">
@@ -11,15 +11,15 @@ const Header = () => {
                 </div>
                 <div>
                     <ul className="h-16 flex gap-6 pl-10 text-xl text-gray-800 font-semibold items-end select-none">
-                        <li>Home</li>
-                        <li>Browse</li>
+                        <li className={activeTab === 'Home' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}>Home</li>
+                        <li className={activeTab === 'Browse' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}>Browse</li>
                     </ul>
                 </div>
             </div>
             <div >
-            <ul className="h-16 flex gap-4 text-xl justify-end items-end mr-4">
-                <li className="text-gray-800 font-semibold select-none">Wishlist</li>
-                <li className="text-gray-800 font-semibold select-none">Cart</li>
+            <ul className="h-16 flex gap-4 text-xl justify-end items-end mr-4 font-semibold select-none">
+                <li className={activeTab === 'Wishlist' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}>Wishlist</li>
+                <li className={activeTab === 'Cart' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}>Cart</li>
             </ul>
             </div>
             
