@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Header = ({activeTab, handleSelection}) => {
     return (
@@ -11,8 +12,8 @@ const Header = ({activeTab, handleSelection}) => {
                 </div>
                 <div>
                     <ul className="h-16 flex gap-6 pl-10 text-xl text-gray-800 font-semibold items-end select-none">
-                        <li className={activeTab === 'Home' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}>Home</li>
-                        <li className={activeTab === 'Browse' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}>Browse</li>
+                        <li className={activeTab === 'Home' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}><Link to='/'>Home</Link></li>
+                        <li className={activeTab === 'Browse' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}><Link to='/browse'>Browse</Link></li>
                     </ul>
                 </div>
             </div>
