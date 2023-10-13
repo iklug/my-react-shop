@@ -2,7 +2,7 @@ import bookObject from "../data/bookObject";
 
 const Card = ({book}) => {
     return (
-        <div className="h-72 border-b-2 border-slate-100 flex gap-4 justify-start ml-28 items-center">
+        <div className="h-72 border-b-2 border-slate-100 flex gap-4 justify-start ml-28 items-center overflow-scroll">
             <img src={`https://covers.openlibrary.org/b/isbn/${book.isbn}-L.jpg`} alt="" className="h-60" />
             <div className="flex flex-col gap-8 justify-center">
                 <div>
