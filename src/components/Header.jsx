@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Header = ({activeTab, handleSelection}) => {
+const Header = ({activeTab, handleSelection, wishlist, cart}) => {
     return (
      
         <div className="h-20 flex flex-row bg-stone-50 shadow-md fixed w-full justify-between pl-6 pr-8">
@@ -19,8 +19,10 @@ const Header = ({activeTab, handleSelection}) => {
             </div>
             <div >
             <ul className="h-16 flex gap-4 text-xl justify-end items-end mr-4 font-semibold select-none">
-                <li className={activeTab === 'Wishlist' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}>Wishlist</li>
-                <li className={activeTab === 'Cart' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}>Cart</li>
+                <li className={activeTab === 'Wishlist' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}><Link to='/wishlist'>Wishlist</Link></li>
+                {wishlist.length > 0 && <div className="h-4 w-4 rounded-full bg-teal-200 text-blue-600 -ml-5 mb-4 opacity-40 text-xs text-center">{wishlist.length}</div>}
+
+                <li className={activeTab === 'Cart' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}><Link to='/cart'>Cart</Link></li>
             </ul>
             </div>
             
