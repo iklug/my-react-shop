@@ -1,4 +1,4 @@
-import bookObject from "../data/bookObject";
+
 import { useState, memo } from "react";
 
 const Card = ({book, addToCart, addToWishlist, wishlist, inWish})=>{

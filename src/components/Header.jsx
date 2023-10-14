@@ -20,9 +20,10 @@ const Header = ({activeTab, handleSelection, wishlist, cart}) => {
             <div >
             <ul className="h-16 flex gap-4 text-xl justify-end items-end mr-4 font-semibold select-none">
                 <li className={activeTab === 'Wishlist' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}><Link to='/wishlist'>Wishlist</Link></li>
-                {wishlist.length > 0 && <div className="h-4 w-4 rounded-full bg-teal-200 text-blue-600 -ml-5 mb-4 opacity-40 text-xs text-center">{wishlist.length}</div>}
+                {wishlist.length > 0 && <div className="h-4 w-4 rounded-full bg-teal-200 text-purple-800 -ml-5 mb-4 opacity-70 text-xs text-center">{wishlist.length}</div>}
 
                 <li className={activeTab === 'Cart' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}><Link to='/cart'>Cart</Link></li>
+                {cart.length > 0 && <div className="h-4 w-4 rounded-full bg-teal-200 text-purple-800 -ml-5 mb-4 opacity-70 text-xs text-center">{cart.map(item => item.quantity).reduce((x,y)=>Number(x)+Number(y))}</div>}
             </ul>
             </div>
             
