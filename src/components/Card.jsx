@@ -6,6 +6,7 @@ const Card = ({book, addToCart, addToWishlist, wishlist, inWish})=>{
 
 
 
+
 const handleChange = () => {
     addToWishlist(book);
 }

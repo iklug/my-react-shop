@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useMemo } from "react";
 
 
 
 const CheckoutSummary = ({cart}) => {
 
-const amount = cart.map(x => x.quantity).reduce((x,y)=> Number(x)+Number(y));
+const amount = useMemo(()=> { return cart.map(x => x.quantity).reduce((x,y)=> Number(x)+Number(y))}, [cart]);
+
+
+
 const cost = cart.map(x => x.price * x.quantity).reduce((x,y)=>x+y).toFixed(2);
 const tax = (cost * .08).toFixed(2);
 
