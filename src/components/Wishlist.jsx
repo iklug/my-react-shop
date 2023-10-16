@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { ShopContext } from "../App";
 
-const Wishlist = ({wishlist}) => {
 
+const Wishlist = () => {
+
+    const {wishlist} = useContext(ShopContext)
     const [showX, setShowX] = useState(false);
+
 
     return (
 <div className="flex flex-wrap gap-6 justify-center">

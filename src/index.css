@@ -8,3 +8,7 @@
 
   width: 100%;
 }
+
+.rotated {
+  transform: rotate(0.1turn);
+}

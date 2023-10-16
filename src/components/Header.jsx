@@ -1,6 +1,13 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ShopContext } from "../App";
 
-const Header = ({activeTab, handleSelection, wishlist, cart}) => {
+const Header = ({handleSelection}) => {
+
+    const {activeTab, wishlist, cart} = useContext(ShopContext);
+
+
+
     return (
      
         <div className="h-20 flex flex-row bg-stone-50 shadow-md fixed w-full justify-between pl-6 pr-8">

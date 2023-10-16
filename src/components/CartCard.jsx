@@ -1,9 +1,10 @@
 
-import { useState, memo, useMemo } from "react";
+import { useState, memo, useMemo, useContext } from "react";
+import { ShopContext } from "../App";
 
-const CartCard = ({book, cart, changeCart })=>{
+const CartCard = ({book})=>{
 
-
+const {cart, changeCart} = useContext(ShopContext);
 
 
     const handleChange = (event) => {

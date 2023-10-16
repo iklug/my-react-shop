@@ -7,17 +7,28 @@ import Homepage from './components/Homepage'
 import { Route, Routes } from 'react-router-dom'
 import Wishlist from './components/Wishlist'
 import Cart from './components/Cart'
+import { createContext } from 'react'
+
+
+export const ShopContext = createContext({
+  cart: [],
+  wishlist: [],
+  activeTab: null,
+  addToCart: ()=>{},
+  changeCart: ()=>{},
+  addToWishlist: ()=>{},
+
+});
+
 
 function App() {
+
+
+  
 
   const [activeTab, setActiveTab] = useState(null)
   const [wishlist, setWishlist] = useState([]);
   const [cart, setCart] = useState([]);
-
-const handleSelection = (e) => {
-  const selection = e.target.textContent;
-  selection === 'Start Exploring' ? setActiveTab('Browse') : setActiveTab(selection);
-}
 
 
 const addToCart = (item) => {
@@ -43,24 +54,23 @@ const addToWishlist = (item) => {
 
 
   return (
-
+<ShopContext.Provider value={{cart, wishlist, activeTab, addToCart, changeCart, addToWishlist}}>
     <div>
       <Header 
-      activeTab={activeTab}
-      wishlist={wishlist} 
-      cart={cart} 
-      handleSelection={handleSelection} 
+      handleSelection={(e)=>{e.target.textContent === 'Start Exploring' 
+      ? setActiveTab('Browse') : setActiveTab(e.target.textContent)}}
       />
       <div className='pt-32 overflow-hidden'>
       <Routes>
-          <Route path='/' element={<Homepage handleSelection={handleSelection} />}/>
-          <Route path='/browse' element={bookObject.map(item=><Card book={item} key={item.isbn} addToCart={addToCart} addToWishlist={addToWishlist} wishlist={wishlist} inWish={wishlist.filter(thing => thing.title === item.title).length > 0}/>)}/> 
+          <Route path='/' element={<Homepage handleSelection={(e)=>{e.target.textContent === 'Start Exploring' ? setActiveTab('Browse') : setActiveTab(e.target.textContent)}} />}/>
+          <Route path='/browse' element={bookObject.map(item=><Card book={item} key={item.isbn} inWish={wishlist.filter(thing => thing.title === item.title).length > 0}/>)}/> 
           <Route path='/wishlist' element={<Wishlist wishlist={wishlist}/>}/>
           <Route path='/cart' element={<Cart cart={cart} addToCart={addToCart} changeCart={changeCart}/>}/>  
           <Route path='*' element={<Homepage />} />      
       </Routes>
         </div>
     </div>
+    </ShopContext.Provider>
   )
 }
 

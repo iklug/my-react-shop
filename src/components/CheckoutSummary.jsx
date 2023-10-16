@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useMemo } from "react";
+import { ShopContext } from "../App";
 
 
 
-const CheckoutSummary = ({cart}) => {
+
+const CheckoutSummary = () => {
+
+
+const {cart} = useContext(ShopContext);
 
 const amount = useMemo(()=> { return cart.map(x => x.quantity).reduce((x,y)=> Number(x)+Number(y))}, [cart]);
 

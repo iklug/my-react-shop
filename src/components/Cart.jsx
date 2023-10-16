@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import CartCard from "./CartCard";
 import CheckoutSummary from "./CheckoutSummary";
-const Cart = ({cart, changeCart}) => {
+import { useContext } from "react";
+import { ShopContext } from "../App";
+const Cart = () => {
 
+    const {cart} = useContext(ShopContext);
 
     return (
     
@@ -15,12 +18,12 @@ const Cart = ({cart, changeCart}) => {
                                 <Link to='/browse'><button className="bg-green-100 text-green-900 font-semibold text-md h-16 w-48 rounded-lg border-b-2 border-b-green-600">Start Adding Books</button></Link>
                         </div>
                         :
-                        <div>{cart.map(item => <CartCard book={item} cart={cart} changeCart={changeCart}/>)}</div>}
+                        <div>{cart.map(item => <CartCard book={item} key={item.isbn}/>)}</div>}
                     </div>
                    
                     {cart.length > 0 &&
                      <div id="checkoutSummary div" className="mr-10 mt-16">
-                    <CheckoutSummary cart={cart} />
+                    <CheckoutSummary />
                     </div>
                     }
                 </div>

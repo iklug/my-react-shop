@@ -1,9 +1,10 @@
 
-import { useState, memo } from "react";
+import { useState, memo, useContext } from "react";
+import { ShopContext } from "../App";
 
-const Card = ({book, addToCart, addToWishlist, wishlist, inWish})=>{
+const Card = ({book, inWish})=>{
 
-
+const {addToCart, addToWishlist, wishlist} = useContext(ShopContext);
 
 
 
