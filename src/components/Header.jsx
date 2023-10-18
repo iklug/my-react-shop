@@ -1,10 +1,19 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../App";
+import { useDispatch, useSelector } from "react-redux";
+import { changeTab } from "../redux/activeTab";
+
+
 
 const Header = ({handleSelection}) => {
 
-    const {activeTab, wishlist, cart} = useContext(ShopContext);
+    const {wishlist, cart} = useContext(ShopContext);
+
+    const activeTab = useSelector((state) => state.activeTab.value);
+    const dispatch = useDispatch();
+
+
 
 
 
@@ -19,8 +28,8 @@ const Header = ({handleSelection}) => {
                 </div>
                 <div>
                     <ul className="h-16 flex gap-6 pl-10 text-xl text-gray-800 font-semibold items-end select-none">
-                        <li className={activeTab === 'Home' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}><Link to='/'>Home</Link></li>
-                        <li className={activeTab === 'Browse' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}><Link to='/browse'>Browse</Link></li>
+                        <li className={activeTab === 'Home' ? 'text-green-600' : 'text-gray-800'} onClick={(e)=> dispatch(changeTab(e.target.textContent))}><Link to='/'>Home</Link></li>
+                        <li className={activeTab === 'Browse' ? 'text-green-600' : 'text-gray-800'} onClick={(e)=> dispatch(changeTab(e.target.textContent))}><Link to='/browse'>Browse</Link></li>
                     </ul>
                 </div>
             </div>
