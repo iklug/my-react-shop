@@ -3,9 +3,14 @@ import CartCard from "./CartCard";
 import CheckoutSummary from "./CheckoutSummary";
 import { useContext } from "react";
 import { ShopContext } from "../App";
+import { useSelector, useDispatch } from "react-redux";
+
+
 const Cart = () => {
 
-    const {cart} = useContext(ShopContext);
+    // const {cart} = useContext(ShopContext);
+
+    const cart = useSelector((state) => state.cart.value);
 
     return (
     

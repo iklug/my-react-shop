@@ -8,7 +8,7 @@ export const activeTabSlice = createSlice(
     {
         name: 'activeTab',
         initialState: {
-            value: '',
+            value: 'Home',
         },
         reducers: {
             changeTab: (state, action) => {

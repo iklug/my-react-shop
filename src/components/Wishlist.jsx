@@ -1,12 +1,15 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../App";
+import { useSelector, useDispatch } from "react-redux";
 
 
 const Wishlist = () => {
 
-    const {wishlist} = useContext(ShopContext)
-    const [showX, setShowX] = useState(false);
+const wishlist = useSelector((state)=>state.wishlist.value);
+
+    // const {wishlist} = useContext(ShopContext)
+    // const [showX, setShowX] = useState(false);
 
 
     return (

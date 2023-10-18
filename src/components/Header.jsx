@@ -8,14 +8,12 @@ import { changeTab } from "../redux/activeTab";
 
 const Header = ({handleSelection}) => {
 
-    const {wishlist, cart} = useContext(ShopContext);
+    // const {wishlist, cart} = useContext(ShopContext);
 
+    const wishlist = useSelector((state) => state.wishlist.value);
+    const cart = useSelector((state) => state.cart.value);
     const activeTab = useSelector((state) => state.activeTab.value);
     const dispatch = useDispatch();
-
-
-
-
 
     return (
      
@@ -35,10 +33,10 @@ const Header = ({handleSelection}) => {
             </div>
             <div >
             <ul className="h-16 flex gap-4 text-xl justify-end items-end mr-4 font-semibold select-none">
-                <li className={activeTab === 'Wishlist' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}><Link to='/wishlist'>Wishlist</Link></li>
+                <li className={activeTab === 'Wishlist' ? 'text-green-600' : 'text-gray-800'} onClick={(e)=> dispatch(changeTab(e.target.textContent))}><Link to='/wishlist'>Wishlist</Link></li>
                 {wishlist.length > 0 && <div className="h-4 w-4 rounded-full bg-teal-200 text-purple-800 -ml-5 mb-4 opacity-70 text-xs text-center">{wishlist.length}</div>}
 
-                <li className={activeTab === 'Cart' ? 'text-green-600' : 'text-gray-800'} onClick={handleSelection}><Link to='/cart'>Cart</Link></li>
+                <li className={activeTab === 'Cart' ? 'text-green-600' : 'text-gray-800'} onClick={(e)=> dispatch(changeTab(e.target.textContent))}><Link to='/cart'>Cart</Link></li>
                 {cart.length > 0 && <div className="h-4 w-4 rounded-full bg-teal-200 text-purple-800 -ml-5 mb-4 opacity-70 text-xs text-center">{cart.map(item => item.quantity).reduce((x,y)=>Number(x)+Number(y))}</div>}
             </ul>
             </div>

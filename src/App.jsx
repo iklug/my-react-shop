@@ -8,6 +8,8 @@ import { Route, Routes } from 'react-router-dom'
 import Wishlist from './components/Wishlist'
 import Cart from './components/Cart'
 import { createContext } from 'react'
+import { useDispatch, useSelector } from "react-redux";
+
 
 
 export const ShopContext = createContext({
@@ -24,10 +26,11 @@ export const ShopContext = createContext({
 function App() {
 
 
-  
+  const wishlist = useSelector((state) => state.wishlist.value);
+  const dispath = useDispatch();
 
   // const [activeTab, setActiveTab] = useState(null)
-  const [wishlist, setWishlist] = useState([]);
+  // const [wishlist, setWishlist] = useState([]);
   const [cart, setCart] = useState([]);
 
 
@@ -43,18 +46,22 @@ const changeCart = (item) => {
   console.log(event.target.value)
 }
 
-const addToWishlist = (item) => {
+
+// const addToWishlist = (item) => {
   
-  event.target.textContent === 'On Wishlist' ? console.log('sorry, already in wishlist') :
-  setWishlist(prev => [...prev, item]);
+//   event.target.textContent === 'On Wishlist' ? console.log('sorry, already in wishlist') :
+//   setWishlist(prev => [...prev, item]);
+// }
+
+const createPayload = (item, event) => {
+  console.log(event.target.value);
+  console.log(item.title);
 }
 
 
 
-
-
   return (
-<ShopContext.Provider value={{cart, wishlist, addToCart, changeCart, addToWishlist}}>
+
     <div>
       <Header 
       // handleSelection={(e)=>{e.target.textContent === 'Start Exploring' 
@@ -64,13 +71,13 @@ const addToWishlist = (item) => {
       <Routes>
           <Route path='/' element={<Homepage/>}/>
           <Route path='/browse' element={bookObject.map(item=><Card book={item} key={item.isbn} inWish={wishlist.filter(thing => thing.title === item.title).length > 0}/>)}/> 
-          <Route path='/wishlist' element={<Wishlist wishlist={wishlist}/>}/>
+          <Route path='/wishlist' element={<Wishlist/>}/>
           <Route path='/cart' element={<Cart cart={cart} addToCart={addToCart} changeCart={changeCart}/>}/>  
           <Route path='*' element={<Homepage />} />      
       </Routes>
         </div>
     </div>
-    </ShopContext.Provider>
+
   )
 }
 

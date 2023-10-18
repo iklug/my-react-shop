@@ -1,14 +1,17 @@
 import { useContext, useState } from "react";
 import { useMemo } from "react";
 import { ShopContext } from "../App";
+import { useSelector } from "react-redux";
 
 
 
 
 const CheckoutSummary = () => {
 
+const cart = useSelector((state) => state.cart.value);
 
-const {cart} = useContext(ShopContext);
+
+// const {cart} = useContext(ShopContext);
 
 const amount = useMemo(()=> { return cart.map(x => x.quantity).reduce((x,y)=> Number(x)+Number(y))}, [cart]);
 

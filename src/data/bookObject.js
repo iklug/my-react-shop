@@ -6,7 +6,8 @@ const bookObject = [
         isbn: '9780765326355',
         author: 'Brandon Sanderson',
         series: 'The Stormlight Archive',
-        price: 16.99
+        price: 16.99,
+        quantity: 1,
     },
     {
         title: 'Words of Radiance',
@@ -14,7 +15,8 @@ const bookObject = [
         isbn: '9780765326362',
         author: 'Brandon Sanderson',
         series: 'The Stormlight Archive',
-        price: 18.99
+        price: 18.99,
+        quantity: 1,
     },
     {
         title: 'Oathbringer',
@@ -22,7 +24,8 @@ const bookObject = [
         isbn: '9780765326379',
         author: 'Brandon Sanderson',
         series: 'The Stormlight Archive',
-        price: 22.99
+        price: 22.99,
+        quantity: 1,
     },
     {
         title: 'Rhythm of War',
@@ -30,7 +33,8 @@ const bookObject = [
         isbn: '9780765326386',
         author: 'Brandon Sanderson',
         series: 'The Stormlight Archive',
-        price: 11.99
+        price: 11.99,
+        quantity: 1,
     },
     {
         title: 'The Final Empire',
@@ -38,7 +42,8 @@ const bookObject = [
         isbn: '9780765311788',
         author: 'Brandon Sanderson',
         series: 'The Misborn Saga',
-        price: 8.99
+        price: 8.99,
+        quantity: 1,
     },
     {
         title: 'The Well of Ascension',
@@ -46,7 +51,8 @@ const bookObject = [
         isbn: '9780765316882',
         author: 'Brandon Sanderson',
         series: 'The Misborn Saga',
-        price: 13.99
+        price: 13.99,
+        quantity: 1,
     },
     {
         title: 'The Hero of Ages',
@@ -54,7 +60,8 @@ const bookObject = [
         isbn: '9780765316899',
         author: 'Brandon Sanderson',
         series: 'The Misborn Saga',
-        price: 14.99
+        price: 14.99,
+        quantity: 1,
     },
     {
         title: 'Warbreaker',
@@ -62,7 +69,8 @@ const bookObject = [
         isbn: '9780575097469',
         author: 'Brandon Sanderson',
         series: 'Warbreaker',
-        price: 11.99
+        price: 11.99,
+        quantity: 1,
     },
     
     

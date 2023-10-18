@@ -1,16 +1,30 @@
 
 import { useState, memo, useMemo, useContext } from "react";
 import { ShopContext } from "../App";
+import { useSelector, useDispatch } from "react-redux";
+import { changeQuantity } from "../redux/cart";
 
 const CartCard = ({book})=>{
 
-const {cart, changeCart} = useContext(ShopContext);
+// const {cart, changeCart} = useContext(ShopContext);
+
+const cart = useSelector((state)=> state.cart.value);
+const dispatch = useDispatch();
+
+    // const handleChange = (event) => {
+    //     setQuantity(event.target.value);
+
+    // }
 
 
-    const handleChange = (event) => {
-        setQuantity(event.target.value);
-
-    }
+const createPayload = (event, item) => {
+    return (
+        {
+            title: item.title,
+            value: event.target.value,
+        }
+    )
+  }
 
     return (
         <div className="h-40 ml-8 border-b-2 border-slate-100 flex gap-4 justify-start items-center overflow-scroll">
@@ -25,11 +39,11 @@ const {cart, changeCart} = useContext(ShopContext);
                 <div className="flex flex-col items-start gap-3">
                 <p className="text-xl font-bold ml-2">${book.price}</p>
                   
-                    <button className="text-green-800 ml-2"onClick={handleChange}>{'Remove from cart'}</button>
+                    <button className="text-green-800 ml-2"onClick={()=>{console.log('not yet available')}}>{'Remove from cart'}</button>
                     </div>
                     <div className="flex-col flex gap-2">
                         <label htmlFor="quantity" className="italic font-thin text-sm">Quantity</label>
-                        <select name="Quantity" value={book.quantity} onChange={()=>changeCart(book)} id="quantity" className="border border-stone-200">
+                        <select name="Quantity" value={book.quantity} onChange={(e)=>dispatch(changeQuantity(createPayload(e,book)))} id="quantity" className="border border-stone-200">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>

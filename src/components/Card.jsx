@@ -1,16 +1,18 @@
 
 import { useState, memo, useContext } from "react";
 import { ShopContext } from "../App";
+import { useDispatch, useSelector } from "react-redux";
+import { add } from "../redux/wishlist";
+import { addToCart } from "../redux/cart";
+
 
 const Card = ({book, inWish})=>{
 
-const {addToCart, addToWishlist, wishlist} = useContext(ShopContext);
+// const {addToCart, addToWishlist} = useContext(ShopContext);
 
-
-
-const handleChange = () => {
-    addToWishlist(book);
-}
+const wishlist = useSelector((state) => state.wishlist.value);
+const cart = useSelector((state)=>state.cart.value);
+const dispatch = useDispatch();
 
 
 
@@ -23,13 +25,12 @@ const handleChange = () => {
                     <p className='font-thin text-xs'>{book.series}</p>
                     <h1 className="font-bold text-lg">{book.title}</h1>
                     <p className="text-md italic">{'by ' + book.author}</p>
-                    
                 </div>
                 
                 <div className="flex flex-col items-start gap-3">
                 <p className="text-2xl font-bold ml-2">${book.price}</p>
-                    <button className="h-12 w-32 text-lg font-semibold shadow-sm bg-green-700 text-stone-200 rounded-lg" onClick={()=>addToCart(book)}>Add to Cart</button>
-                    <button className="text-green-800 ml-2"onClick={handleChange}>{inWish ? 'On Wishlist' :"Want to read"}</button>
+                    <button className="h-12 w-32 text-lg font-semibold shadow-sm bg-green-700 text-stone-200 rounded-lg" onClick={()=>{dispatch(addToCart(book))}}>Add to Cart</button>
+                    <button className="text-green-800 ml-2"onClick={()=>{dispatch(add(book))}}>{inWish ? 'On Wishlist' :"Want to read"}</button>
                 </div>
                 
             </div>
