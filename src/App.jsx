@@ -29,13 +29,15 @@ function App() {
   const [activeTab, setActiveTab] = useState(null)
   const [wishlist, setWishlist] = useState([]);
   const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
+
 
 
 const addToCart = (item) => {
   const inCart = cart.find(x => x.title === item.title);
   inCart ? setCart(cart.map(cartItem => cartItem.title === item.title ? {...inCart, quantity: inCart.quantity + 1} : cartItem)) 
   : setCart(prev => [...prev, {...item, quantity: 1 }]);
-  
+
 }
 
 const changeCart = (item) => {
