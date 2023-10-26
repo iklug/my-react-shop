@@ -25,7 +25,7 @@ function App() {
 
 
   
-
+  const [fakeStuff, setFakeStuff] = useState(null);
   const [activeTab, setActiveTab] = useState(null)
   const [wishlist, setWishlist] = useState([]);
   const [cart, setCart] = useState([]);
